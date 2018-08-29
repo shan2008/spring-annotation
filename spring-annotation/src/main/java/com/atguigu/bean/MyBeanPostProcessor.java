@@ -5,8 +5,7 @@ import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.stereotype.Component;
 
 /**
- * 后置处理器：初始化前后进行处理工作
- * 将后置处理器加入到容器中
+ * 锟斤拷锟斤拷
  * @author lfy
  */
 @Component
