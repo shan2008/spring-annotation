@@ -30,8 +30,6 @@ public class IOCTest_Profile {
 		applicationContext.register(MainConfigOfProfile.class);
 		//4、启动刷新容器
 		applicationContext.refresh();
-		
-		
 		String[] namesForType = applicationContext.getBeanNamesForType(DataSource.class);
 		for (String string : namesForType) {
 			System.out.println(string);
