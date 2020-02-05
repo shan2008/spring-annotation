@@ -1,3 +1,27 @@
+0、
+1.通过构造函数注入一些后置处理器
+  1)、AnnotationConfigUtils工具注册一些beanDefinition ConfigurationClassPostProcessor(-->BeanDefinitionRegistryPostProcessor
+  （postProcessBeanDefinitionRegistry）
+  -->BeanFactoryPostProcessor（postProcessBeanFactory）),
+      AutowiredAnnotationBeanPostProcessor(SmartInstantiationAwareBeanPostProcessor-->BeanPostProcessor),RequiredAnnotationBeanPostProcessor
+  2)
+   invokeBeanDefinitionRegistryPostProcessors
+   ConfigurationClassPostProcessor 通过postProcessBeanDefinitionRegistry  ConfigurationClassParser解析注解
+
+
+   invokeBeanFactoryPostProcessors 执行BeanDefinitionRegistryPostProcessor中的postProcessBeanDefinitionRegistry
+   再执行BeanFactoryPostProcessor中postProcessBeanFactory
+   ->PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors
+      ->invokeBeanDefinitionRegistryPostProcessors
+      ->postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor is )
+      ->postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor)
+      ->processConfigBeanDefinitions(处理配置类，加载beandef)
+      ->ConfigurationClassParser.parse解析配置，引入注解上的配置（奥）
+
+
+
+
+
 Spring容器的refresh()【创建刷新】;
 1、prepareRefresh()刷新前的预处理;
 	1）、initPropertySources()初始化一些属性设置;子类自定义个性化的属性设置方法；
@@ -28,7 +52,7 @@ Spring容器的refresh()【创建刷新】;
 ======================以上是BeanFactory的创建及预准备工作==================================
 5、invokeBeanFactoryPostProcessors(beanFactory);执行BeanFactoryPostProcessor的方法；
 	BeanFactoryPostProcessor：BeanFactory的后置处理器。在BeanFactory标准初始化之后执行的；
-	两个接口：BeanFactoryPostProcessor、BeanDefinitionRegistryPostProcessor
+	两个接口：BeanFactoryPostProcessor、BeanDefinitionRegistryPostProcessor（ConfigurationClassPostProcessor 实现了它）
 	1）、执行BeanFactoryPostProcessor的方法；
 		先执行BeanDefinitionRegistryPostProcessor
 		1）、获取所有的BeanDefinitionRegistryPostProcessor；
@@ -38,7 +62,9 @@ Spring容器的refresh()【创建刷新】;
 			postProcessor.postProcessBeanDefinitionRegistry(registry)
 		4）、最后执行没有实现任何优先级或者是顺序接口的BeanDefinitionRegistryPostProcessors；
 			postProcessor.postProcessBeanDefinitionRegistry(registry)
-
+            a.postProcessBeanDefinitionRegistry
+            b.内部调用processConfigBeanDefinitions->遍历容器中的beanDefinitions->拿到注解配置类
+            ->ConfigurationClassParser解析加入BeanDefinition容器
 
 		再执行BeanFactoryPostProcessor的方法
 		1）、获取所有的BeanFactoryPostProcessor

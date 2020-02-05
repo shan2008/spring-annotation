@@ -1,13 +1,18 @@
 package com.atguigu.aop;
 
+import com.atguigu.bean.Car;
+import com.atguigu.bean.RainBow;
 import org.springframework.stereotype.Component;
 
 @Component
 public class MathCalculator {
 	
-	public int div(int i,int j){
+	public RainBow div(int i,int j){
+		System.out.println("MathCalculator div...");
+		RainBow rainBow=new RainBow();
+		rainBow.setColor("green");
 
-		return i/j;	
+		return rainBow;
 	}
 
 }

@@ -21,7 +21,7 @@ public class IOCTest_Tx {
 	public void test01(){
 		AnnotationConfigApplicationContext applicationContext = 
 				new AnnotationConfigApplicationContext(TxConfig.class);
-	
+
 		UserService userService = applicationContext.getBean(UserService.class);
 		
 		userService.insertUser();

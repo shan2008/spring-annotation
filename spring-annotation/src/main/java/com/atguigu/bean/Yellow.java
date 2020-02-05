@@ -1,5 +1,8 @@
 package com.atguigu.bean;
 
-public class Yellow {
+import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
+
+public class Yellow  {
 
 }

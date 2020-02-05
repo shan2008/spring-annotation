@@ -2,14 +2,12 @@ package com.atguigu.test;
 
 import com.atguigu.aop.Login;
 import com.atguigu.aop.UerLogin;
+import com.atguigu.bean.*;
 import org.junit.Test;
+import org.springframework.aop.MethodBeforeAdvice;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.atguigu.aop.MathCalculator;
-import com.atguigu.bean.Boss;
-import com.atguigu.bean.Car;
-import com.atguigu.bean.Color;
-import com.atguigu.bean.Red;
 import com.atguigu.config.MainConfigOfAOP;
 import com.atguigu.config.MainConifgOfAutowired;
 import com.atguigu.dao.BookDao;
@@ -22,8 +20,9 @@ public class IOCTest_AOP {
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfigOfAOP.class);
 
 
-        MathCalculator mathCalculator=(MathCalculator)applicationContext.getBean("mathCalculator");
-        mathCalculator.div(1,9);
+        MathCalculator mathCalculator = (MathCalculator) applicationContext.getBean("mathCalculator");
+        RainBow re = mathCalculator.div(1, 9);
+        System.out.println(re.getColor());
 
       /*  UerLogin userLogin = (UerLogin) applicationContext.getBean("uerLogin");
         userLogin.userLogin();

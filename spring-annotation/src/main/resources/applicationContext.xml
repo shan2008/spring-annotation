@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+       default-autowire="byName">
+
+
+    <bean id="myBeanDefinitionRegistry" class="com.atguigu.xml.MyBeanDefinitionRegistry"></bean>
+    <bean id="studentInfo" class="com.atguigu.xml.StudentInfo"></bean>
+    <bean id="myApplicationListener" class="com.atguigu.xml.MyApplicationListener"></bean>
+
+    <bean id="messageService" class="com.atguigu.xml.MessageServiceImpl" init-method="init" destroy-method="destory">
+        <property name="info" value="三"/>
+        <property name="studentInfo" ref="studentInfo"/>
+    </bean>
+
+    <bean id="myBeanPostProcessor" class="com.atguigu.xml.MyBeanPostProcessor"/>
+</beans>

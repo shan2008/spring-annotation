@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
  * @author syou
  * @date 2018/8/19.
  */
-@Aspect
-@Component
+//@Aspect
+//@Component
 public class EnableLogin {
 
     @DeclareParents(value = "com.atguigu.aop.UerLogin+", defaultImpl = DefaultLogin.class)

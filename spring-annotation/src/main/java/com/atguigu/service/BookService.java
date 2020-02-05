@@ -14,10 +14,10 @@ import com.atguigu.dao.BookDao;
 @Service
 public class BookService {
 	
-	//@Qualifier("bookDao")
-	//@Autowired(required=false)
+	//@Qualifier("bookDao2")
+	@Autowired(required=false)
 	//@Resource(name="bookDao2")
-	@Inject
+	//@Inject
 	private BookDao bookDao;
 	
 	public void print(){

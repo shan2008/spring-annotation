@@ -60,7 +60,7 @@ import com.atguigu.dao.BookDao;
 	"com.atguigu.controller","com.atguigu.bean"})
 public class MainConifgOfAutowired {
 	
-	@Primary
+	//@Primary
 	@Bean("bookDao2")
 	public BookDao bookDao(){
 		BookDao bookDao = new BookDao();
